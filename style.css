@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Press Start 2P', sans-serif;
+  font-size: 10px;
+}
+
+#main {
+  min-height: 100vh;
+  background: linear-gradient(#e66465, #9198e5);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 0.125fr 0.3fr 0.125fr 1.2fr 0.25fr;
+  grid-template-areas:
+    'title title title title'
+    'main-menu main-menu main-menu main-menu'
+    'message message message message'
+    'game-board game-board game-board game-board'
+    'bottom-menu bottom-menu bottom-menu bottom-menu';
+}
+
+#title {
+  grid-area: title;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#main-menu {
+  grid-area: main-menu;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#message {
+  grid-area: message;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#game-board {
+  grid-area: game-board;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#bottom-menu {
+  grid-area: bottom-menu;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  width: 10rem;
+}
+
+h2 {
+  background-color: black;
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+#player-name,
+#menu-button {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem;
+}
+
+#player1-name {
+  margin-bottom: 2.8rem;
+}
+
+#start-button {
+  margin-bottom: 5rem;
+}
+
+#game-fields {
+  height: 315px;
+  width: 315px;
+  border: 5px solid black;
+  background: linear-gradient(#e66465, #9198e5);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.field {
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 7rem;
+}
+
+button {
+  padding: 0.25rem;
+  cursor: pointer;
+}
