@@ -9,11 +9,13 @@
 }
 
 #main {
-  min-height: 100vh;
+  height: 100vh;
+  width: 100vw;
+
   background: linear-gradient(#e66465, #9198e5);
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 0.125fr 0.3fr 0.125fr 1.2fr 0.25fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.1fr 0.2fr 0.1fr 0.7fr 0.1fr;
   grid-template-areas:
     'title title title title'
     'main-menu main-menu main-menu main-menu'
@@ -32,6 +34,7 @@
 #main-menu {
   grid-area: main-menu;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -40,7 +43,7 @@
   grid-area: message;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
 }
 
 #game-board {
@@ -58,7 +61,12 @@
 }
 
 input {
-  width: 10rem;
+  width: 15rem;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 2rem;
 }
 
 h2 {
@@ -68,19 +76,17 @@ h2 {
   border-radius: 0.5rem;
 }
 
-#player-name,
-#menu-button {
+#player-name {
+  height: 50%;
   display: flex;
   flex-direction: column;
-  margin: 1.5rem;
+  justify-content: space-evenly;
 }
 
-#player1-name {
-  margin-bottom: 2.8rem;
-}
-
-#start-button {
-  margin-bottom: 5rem;
+#menu-button {
+  height: 50%;
+  display: flex;
+  align-items: center;
 }
 
 #game-fields {
@@ -94,6 +100,7 @@ h2 {
 }
 
 .field {
+  cursor: pointer;
   border: 1px solid white;
   display: flex;
   justify-content: center;
@@ -102,6 +109,7 @@ h2 {
 }
 
 button {
-  padding: 0.25rem;
+  margin: 1rem;
+  padding: 1rem;
   cursor: pointer;
 }
