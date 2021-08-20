@@ -40,6 +40,7 @@ const game = (() => {
 
     const checkWinner = () => {
       let winner;
+      checkTie();
       for (let i = 0; i < GameBoard.board.length; i++) {
         if (GameBoard.board[i] === '') continue;
         for (let j = 0; j < GameBoard.winPattern.length; j++) {
@@ -60,14 +61,13 @@ const game = (() => {
             break;
           }
         }
-        // if (gameOn === false && winner === undefined) {
-        //   DisplayController.displayMessage('TIE GAME!!!');
-        //   console.log(winner);
-        //   gameOn = false;
-        //   break;
-        // } else if (winner) {
-        //   break;
-        // }
+      }
+    };
+
+    const checkTie = () => {
+      if (!GameBoard.board.includes('')) {
+        DisplayController.displayMessage('GAME TIE');
+        gameOn = false;
       }
     };
 
@@ -126,7 +126,6 @@ const game = (() => {
 
     const playerAITurn = () => {
       if (playerAI && gameOn) {
-        console.log(gameOn);
         const aiChoice = checkAvailableField();
         DisplayController.fields[aiChoice].textContent = playerAI.getMarker();
         GameBoard.board[aiChoice] = playerAI.getMarker();
