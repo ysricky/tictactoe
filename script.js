@@ -38,6 +38,7 @@ const game = (() => {
       return player;
     };
 
+    //in this function, each item of Gameboard.board will be checked into loop of winPattern to decide the winner or Tie
     const checkWinner = () => {
       let winner;
       checkTie();
@@ -45,6 +46,7 @@ const game = (() => {
         if (GameBoard.board[i] === '') continue;
         for (let j = 0; j < GameBoard.winPattern.length; j++) {
           if (
+            //check for win pattern
             GameBoard.board[GameBoard.winPattern[j][0]] ===
               GameBoard.board[i] &&
             GameBoard.board[GameBoard.winPattern[j][1]] ===
@@ -65,6 +67,7 @@ const game = (() => {
     };
 
     const checkTie = () => {
+      //check for Tie condition
       if (!GameBoard.board.includes('')) {
         DisplayController.displayMessage('GAME TIE');
         gameOn = false;
@@ -72,6 +75,7 @@ const game = (() => {
     };
 
     const startGame = () => {
+      //setting up first initiation to start the game
       if (DisplayController.checkInputs()) {
         if (DisplayController.playerTwoName.value === 'AI') {
           playerAI = createPlayers(DisplayController.playerTwoName.value, 'O');
@@ -88,7 +92,9 @@ const game = (() => {
     };
 
     const checkAvailableField = () => {
+      //this is part of playerAI to play the turn
       const availableField = GameBoard.board.reduce(function (
+        //searching for available array index for playerAI to make legal move
         acc,
         curr,
         index
@@ -97,9 +103,9 @@ const game = (() => {
           acc.push(index);
         }
         return acc;
-      },
-      []);
+      }, []);
       const randomField = () =>
+        //choose a random number from available field
         Math.floor(Math.random() * availableField.length);
       return availableField[randomField()];
     };
@@ -196,6 +202,7 @@ const game = (() => {
     const displayMessage = (text) => (message.textContent = text);
 
     const disableInputs = () => {
+      //function for prevent player from changing configuration when the game is started
       btnStart.setAttribute('disabled', 'disabled');
       btnChooseOpponent.setAttribute('disabled', 'disabled');
       playerOneName.setAttribute('disabled', 'disabled');
@@ -210,6 +217,7 @@ const game = (() => {
     };
 
     const restartGame = () => {
+      //reset game session
       gameFlowController.resetGameFlow();
       resetInputs();
       displayMessage('WELCOME TO TIC-TAC-TOE');
